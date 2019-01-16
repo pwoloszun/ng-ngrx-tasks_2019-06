@@ -1,0 +1,19 @@
+<div class="task-management">
+  <nts-todo-list
+    [items]="todos$ | async"
+    [isFetching]="isFetching$ | async"
+    [isDeletingItems]="isDeletingTodos$ | async"
+    [isEditingItems]="isEditingTodos$ | async"
+    (editItem)="editTodo($event)"
+    (cancelEditItem)="cancelEditTodo($event)"
+    (deleteItem)="deleteTodo($event)"
+    (updateItem)="updateTodo($event)"
+  ></nts-todo-list>
+
+  <nts-create-todo
+    (createItem)="createTodo($event)"
+  ></nts-create-todo>
+
+  <nts-status-modal [messages]="savingTodosMessages$ | async"></nts-status-modal>
+
+</div>

@@ -1,0 +1,17 @@
+<div class="edit-todo">
+  <form [formGroup]="form">
+    <input formControlName="title"/>
+    <input formControlName="description"/>
+    <button
+      (click)="saveClick()"
+      [disabled]="!form.valid"
+      type="button"
+    >Save
+    </button>
+    <button
+      (click)="cancelClick()"
+      type="button"
+    >Cancel
+    </button>
+  </form>
+</div>

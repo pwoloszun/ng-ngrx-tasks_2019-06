@@ -1,0 +1,34 @@
+<div class="todo-list">
+  <h4>Todo List</h4>
+  <div *ngIf="isFetching">
+    <h5>Loading...</h5>
+  </div>
+  <div *ngIf="!isFetching">
+    <ul>
+      <li *ngFor="let item of items">
+
+        <div [ngSwitch]="itemState(item)">
+          <div *ngSwitchCase="'SHOW'">
+            <strong>{{item.title}}</strong>
+            <small>{{item.description}}</small>
+            <button (click)="editClick(item)">Edit</button>
+            <button (click)="removeClick(item)">Remove</button>
+          </div>
+
+          <div *ngSwitchCase="'DELETING'">
+            Deleting... {{item.title}}
+          </div>
+
+          <div *ngSwitchCase="'EDITING'">
+            <nts-edit-todo
+              [item]="item"
+              (saveEdition)="updateClick(item, $event)"
+              (cancelEdition)="cancelEditionClick(item)"
+            ></nts-edit-todo>
+          </div>
+        </div>
+
+      </li>
+    </ul>
+  </div>
+</div>

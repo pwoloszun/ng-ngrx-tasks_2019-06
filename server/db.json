@@ -1,0 +1,84 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "userId": 100
+    },
+    {
+      "title": "post 0.20221838020364635",
+      "userId": 100,
+      "id": 5
+    },
+    {
+      "title": "post 0.6262496234701633",
+      "userId": 100,
+      "id": 6
+    },
+    {
+      "title": "post 0.8330195601199786",
+      "userId": 100,
+      "id": 7
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "bamans some comment",
+      "postId": 1,
+      "userId": 100
+    },
+    {
+      "id": 2,
+      "body": "bobek some comment",
+      "postId": 1,
+      "userId": 200
+    }
+  ],
+  "users": [
+    {
+      "id": 100,
+      "name": "Batman"
+    },
+    {
+      "id": 200,
+      "name": "Bob"
+    }
+  ],
+  "counters": [
+    {
+      "id": "asyncCounter",
+      "value": 71,
+      "updatedAt": null
+    }
+  ],
+  "todos": [
+    {
+      "id": 100,
+      "title": "Buy milk",
+      "isCompleted": false,
+      "description": "2 cartons"
+    },
+    {
+      "id": 104,
+      "title": "another",
+      "isCompleted": false,
+      "description": "sd"
+    },
+    {
+      "title": "a11",
+      "description": "",
+      "id": 111
+    },
+    {
+      "title": "a22",
+      "description": "a2",
+      "id": 112
+    },
+    {
+      "title": "rgb",
+      "description": "test",
+      "id": 113
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+<div class="create-todo">
+  <h4>Create Todo</h4>
+  <form [formGroup]="form">
+    <p>
+      <input formControlName="title"/>
+    </p>
+    <p>
+      <input formControlName="description"/>
+    </p>
+    <p>
+      <button (click)="onSubmit()" [disabled]="!form.valid">
+        Submit
+      </button>
+    </p>
+  </form>
+</div>

@@ -1,0 +1,10 @@
+<div class="counter">
+  <h3>Counter</h3>
+  <h3>{{counterValue$ | async}}</h3>
+  <small>{{updatedAgo$ | async}}</small>
+  <div>
+    <button (click)="increment()">Increment</button>
+    <button (click)="decrement()">Decrement</button>
+    <button>Reset</button>
+  </div>
+</div>
