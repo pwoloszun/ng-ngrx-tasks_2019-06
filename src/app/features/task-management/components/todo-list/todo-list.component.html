@@ -9,8 +9,12 @@
 
         <div [ngSwitch]="itemState(item)">
           <div *ngSwitchCase="'SHOW'">
-            <strong>{{item.title}}</strong>
-            <small>{{item.description}}</small>
+            <div>
+              <strong>{{item.title}}</strong>
+            </div>
+            <div>
+              <small>{{item.description}}</small>
+            </div>
             <button (click)="editClick(item)">Edit</button>
             <button (click)="removeClick(item)">Remove</button>
           </div>

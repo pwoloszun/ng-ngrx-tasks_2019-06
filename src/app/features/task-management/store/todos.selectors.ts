@@ -35,41 +35,10 @@ export const selectListIsFetching = createSelector(
   }
 );
 
-export const selectIsDeletingTodos = createSelector(
-  selectFeature,
-  (state: TaskManagementState) => {
-    return state.isDeleting.todos;
-  }
-);
+// TODO 1: selectIsDeletingTodos selector
 
-export const selectIsEditingTodos = createSelector(
-  selectFeature,
-  (state: TaskManagementState) => {
-    return state.isEditing.todos;
-  }
-);
+// TODO 2a: selectIsEditingTodos selector
 
-export const selectIsSavingTodos = createSelector(
-  selectFeature,
-  (state: TaskManagementState) => {
-    return state.isSaving.todos;
-  }
-);
+// TODO 2b: selectIsSavingTodos selector
 
-export const selectSavingTodos = createSelector(
-  selectFeature,
-  selectIsSavingTodos,
-  selectTodosEntities,
-  (
-    state: TaskManagementState,
-    savingTodos: TransiotionMap,
-    entities: TodosEntities): TodoModel[] => {
-    return reduce(savingTodos, (accumulator: TodoModel[], isSaving: boolean, id: number) => {
-      if (isSaving) {
-        return accumulator.concat(entities[id]);
-      } else {
-        return accumulator;
-      }
-    }, []);
-  }
-);
+// TODO 3: selectSavingTodos

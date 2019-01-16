@@ -6,12 +6,10 @@ import { Observable, of } from 'rxjs';
 import {
   CreateTodoError,
   CreateTodoRequest, CreateTodoSuccess,
-  DeleteTodoError,
-  DeleteTodoRequest, DeleteTodoSuccess,
   FetchAllTodosError,
   FetchAllTodosSuccess,
   TodosActions,
-  TodosActionTypes, UpdateTodoError, UpdateTodoRequest, UpdateTodoSuccess,
+  TodosActionTypes,
 
 } from './todos.actions';
 import { NormalizedTodos, TodosEntities } from './todos.reducer';
@@ -38,17 +36,6 @@ export class TodosEffects {
     })
   );
 
-  @Effect() deleteTodo$: Observable<TodosActions> = this.actions$.pipe(
-    ofType(TodosActionTypes.DELETE_REQUEST),
-    mergeMap((action: DeleteTodoRequest) => {
-      const todo = action.payload;
-      return this.todosService.remove(todo).pipe(
-        map(() => new DeleteTodoSuccess(todo.id)),
-        catchError((error) => of(new DeleteTodoError(error)))
-      );
-    })
-  );
-
   @Effect() createTodo$: Observable<TodosActions> = this.actions$.pipe(
     ofType(TodosActionTypes.CREATE_REQUEST),
     mergeMap((action: CreateTodoRequest) => {
@@ -60,16 +47,9 @@ export class TodosEffects {
     })
   );
 
-  @Effect() updateTodo$: Observable<TodosActions> = this.actions$.pipe(
-    ofType(TodosActionTypes.UPDATE_REQUEST),
-    mergeMap((action: UpdateTodoRequest) => {
-      return this.todosService.update(action.payload).pipe(
-        map((updatedTodo) => normalizeTodos([updatedTodo])),
-        map((normalized) => new UpdateTodoSuccess(normalized)),
-        catchError((error) => of(new UpdateTodoError(error)))
-      );
-    })
-  );
+  // TODO 1: deleteTodo$ effect
+
+  // TODO 2b: updateTodo$ effect
 
   constructor(private actions$: Actions,
               private todosService: TodosService) {

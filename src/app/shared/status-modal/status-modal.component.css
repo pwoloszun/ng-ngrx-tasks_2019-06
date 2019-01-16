@@ -1,7 +1,8 @@
 .status-modal {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 80px;
+  right: 40px;
+  z-index: 1000;
 
   padding: 12px;
   background-color: orange;

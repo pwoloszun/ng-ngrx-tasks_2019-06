@@ -1,5 +1,4 @@
 import { Action } from '@ngrx/store';
-import { AsyncCounterState } from './async-counter.reducer';
 import { AsyncCounterModel } from '../async-counter.model';
 
 export enum AsyncCounterActionTypes {
@@ -10,7 +9,7 @@ export enum AsyncCounterActionTypes {
   INCREMENT_REQUEST = 'side-effects/async-counter/INCREMENT_REQUEST',
   INCREMENT_SUCCESS = 'side-effects/async-counter/INCREMENT_SUCCESS',
 
-  DECREMENT = 'side-effects/async-counter/Decrement',
+  // TODO: decrement actions: request, success
 }
 
 export class FetchRequestAction implements Action {
@@ -45,17 +44,12 @@ export class IncrementSuccessAction implements Action {
   }
 }
 
-export class DecrementAction implements Action {
-  readonly type = AsyncCounterActionTypes.DECREMENT;
-
-  constructor(public payload: number) {
-  }
-}
+// TODO DecrementRequestAction
+// TODO DecrementSuccessAction
 
 export type AsyncCounterActions
   = FetchRequestAction
   | FetchSuccessAction
   | FetchErrorAction
   | IncrementRequestAction
-  | IncrementSuccessAction
-  | DecrementAction;
+  | IncrementSuccessAction;

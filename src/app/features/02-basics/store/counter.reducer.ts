@@ -32,13 +32,8 @@ export function counterReducer(state: CounterState = initialState, action: Count
         updatedAt
       };
     }
-    case CounterActionTypes.DECREMENT:
-      return {
-        ...state,
-        value: state.value - action.payload
-      };
-    case CounterActionTypes.RESET:
-      return initialState;
+    // TODO 2 DECREMENT
+    // TODO 1 RESET
     default:
       return state;
   }

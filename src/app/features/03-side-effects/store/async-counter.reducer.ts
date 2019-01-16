@@ -42,7 +42,7 @@ export function counterReducer(state: AsyncCounterState = initialState, action: 
     }
     case AsyncCounterActionTypes.FETCH_SUCCESS: {
       return {
-        entity: {...action.payload},
+        entity: { ...action.payload },
         isFetching: false,
         error: null
       };
@@ -57,8 +57,7 @@ export function counterReducer(state: AsyncCounterState = initialState, action: 
         error: null
       };
     }
-    case AsyncCounterActionTypes.DECREMENT:
-      return state; // TODO
+    // TODO: decrement
     default:
       return state;
   }

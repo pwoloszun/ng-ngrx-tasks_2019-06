@@ -30,20 +30,4 @@ export const selectCounterIsFetching = createSelector(
   (state: AsyncCounterState) => state.isFetching
 );
 
-export const selectCounterError = createSelector(
-  selectFeature,
-  (state: AsyncCounterState) => state.error
-);
-
-export const selectUpdatedAgo = createSelector(
-  selectCounterUpdatedAt,
-  (datetime: number): string => {
-    const diffInSec = Math.ceil((Date.now() - datetime) / 1000);
-    if (diffInSec > 60) {
-      const diffInMins = Math.floor(diffInSec / 60);
-      return `${diffInMins} minutes ago`;
-    } else {
-      return `${diffInSec} seconds ago`;
-    }
-  }
-);
+// TODO selectCounterError

@@ -59,6 +59,8 @@ export class AsyncCounterEffects {
     })
   );
 
+  // TODO: decrement$ effect
+
   constructor(private actions$: Actions,
               private asyncCounterService: AsyncCounterService,
               private store: Store<ApplicationState>) {

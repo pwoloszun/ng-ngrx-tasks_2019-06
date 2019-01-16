@@ -39,9 +39,9 @@ export class TodoListComponent {
   }
 
   itemState(item) {
-    if (this.isDeletingItems[item.id]) {
+    if (this.isDeletingItems && this.isDeletingItems[item.id]) {
       return 'DELETING';
-    } else if (this.isEditingItems[item.id]) {
+    } else if (this.isEditingItems && this.isEditingItems[item.id]) {
       return 'EDITING';
     } else {
       return 'SHOW';

@@ -46,27 +46,6 @@ export class FetchAllTodosError implements Action {
   }
 }
 
-export class DeleteTodoRequest implements Action {
-  readonly type = TodosActionTypes.DELETE_REQUEST;
-
-  constructor(public payload: TodoModel) {
-  }
-}
-
-export class DeleteTodoSuccess implements Action {
-  readonly type = TodosActionTypes.DELETE_SUCCESS;
-
-  constructor(public payload: number) {
-  }
-}
-
-export class DeleteTodoError implements Action {
-  readonly type = TodosActionTypes.DELETE_ERROR;
-
-  constructor(public payload: Error) {
-  }
-}
-
 export class CreateTodoRequest implements Action {
   readonly type = TodosActionTypes.CREATE_REQUEST;
 
@@ -88,53 +67,18 @@ export class CreateTodoError implements Action {
   }
 }
 
-export class StartTodoEdition implements Action {
-  readonly type = TodosActionTypes.START_EDITION;
+// TODO 1: Delete actions
 
-  constructor(public payload: TodoModel) {
-  }
-}
+// TODO 2a: Edit actions
 
-export class CancelTodoEdition implements Action {
-  readonly type = TodosActionTypes.CANCEL_EDITION;
-
-  constructor(public payload: TodoModel) {
-  }
-}
-
-export class UpdateTodoRequest implements Action {
-  readonly type = TodosActionTypes.UPDATE_REQUEST;
-
-  constructor(public payload: TodoModel) {
-  }
-}
-
-export class UpdateTodoSuccess implements Action {
-  readonly type = TodosActionTypes.UPDATE_SUCCESS;
-
-  constructor(public payload: NormalizedTodos) {
-  }
-}
-
-export class UpdateTodoError implements Action {
-  readonly type = TodosActionTypes.UPDATE_ERROR;
-
-  constructor(public payload: Error) {
-  }
-}
-
+// TODO 2b: Update actions
 
 export type TodosActions = FetchAllTodosRequest
   | FetchAllTodosSuccess
   | FetchAllTodosError
-  | DeleteTodoRequest
-  | DeleteTodoSuccess
-  | DeleteTodoError
+// TODO 1: Delete actions
+// TODO 2a: Edit actions
+// TODO 2b: Update actions
   | CreateTodoRequest
   | CreateTodoSuccess
-  | CreateTodoError
-  | StartTodoEdition
-  | CancelTodoEdition
-  | UpdateTodoRequest
-  | UpdateTodoSuccess
-  | UpdateTodoError;
+  | CreateTodoError;

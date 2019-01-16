@@ -8,17 +8,11 @@ import { TodoFormVm } from '../../services/todo-form-vm';
 import { TransiotionMap, TaskManagementState } from '../../store/todos.reducer';
 import {
   CreateTodoRequest,
-  DeleteTodoRequest,
-  StartTodoEdition,
   FetchAllTodosRequest,
-  CancelTodoEdition,
-  UpdateTodoRequest,
 } from '../../store/todos.actions';
 import {
   selectAllTodos,
-  selectIsDeletingTodos,
-  selectIsEditingTodos, selectIsSavingTodos,
-  selectListIsFetching, selectSavingTodos,
+  selectListIsFetching,
 } from '../../store/todos.selectors';
 import { map } from 'rxjs/operators';
 
@@ -33,7 +27,6 @@ export class TaskManagementComponent implements OnInit {
   isFetching$: Observable<boolean>;
   isDeletingTodos$: Observable<TransiotionMap>;
   isEditingTodos$: Observable<TransiotionMap>;
-  isSavingTodos$: Observable<TransiotionMap>;
   savingTodosMessages$: Observable<string[]>;
 
   constructor(private store: Store<TaskManagementState>) {
@@ -43,21 +36,12 @@ export class TaskManagementComponent implements OnInit {
     this.isFetching$ = this.store.pipe(
       select(selectListIsFetching)
     );
-    this.isDeletingTodos$ = this.store.pipe(
-      select(selectIsDeletingTodos)
-    );
-    this.isEditingTodos$ = this.store.pipe(
-      select(selectIsEditingTodos)
-    );
-    this.isSavingTodos$ = this.store.pipe(
-      select(selectIsSavingTodos)
-    );
-    this.savingTodosMessages$ = this.store.pipe(
-      select(selectSavingTodos),
-      map((todos: TodoModel[]) => {
-        return todos.map((todo) => `Saving ${todo.title}...`);
-      })
-    );
+
+    // TODO 1: isDeletingTodos$
+
+    // TODO 2: isEditingTodos$
+
+    // TODO 3: savingTodosMessages$
   }
 
   ngOnInit() {
@@ -65,19 +49,19 @@ export class TaskManagementComponent implements OnInit {
   }
 
   editTodo(todo: TodoModel) {
-    this.store.dispatch(new StartTodoEdition(todo));
+    // TODO 2a
   }
 
   cancelEditTodo(todo: TodoModel) {
-    this.store.dispatch(new CancelTodoEdition(todo));
+    // TODO 2a
   }
 
   deleteTodo(todo: TodoModel) {
-    this.store.dispatch(new DeleteTodoRequest(todo));
+    // TODO 1
   }
 
   updateTodo(todo: TodoModel) {
-    this.store.dispatch(new UpdateTodoRequest(todo));
+    // TODO 2b
   }
 
   createTodo(todoVm: TodoFormVm) {

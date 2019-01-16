@@ -19,18 +19,9 @@ export class IncrementAction implements Action {
   }
 }
 
-export class DecrementAction implements Action {
-  readonly type = CounterActionTypes.DECREMENT;
+// TODO 2 DecrementAction
 
-  constructor(public payload: number) {
-  }
-}
-
-export class ResetAction implements Action {
-  readonly type = CounterActionTypes.RESET;
-}
+// TODO 1 ResetAction
 
 export type CounterActions
-  = IncrementAction
-  | DecrementAction
-  | ResetAction;
+  = IncrementAction; // TODO 1 & 2

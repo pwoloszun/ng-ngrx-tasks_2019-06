@@ -95,49 +95,22 @@ export function todosReducer(state = initialState, action: TodosActions): TaskMa
     case TodosActionTypes.FETCH_ALL_SUCCESS: {
       return merge({}, state, action.payload, {isFetching: {todoList: false}});
     }
-    case TodosActionTypes.DELETE_REQUEST: {
-      const {payload} = action;
-      return setDeletion(state, payload.id, true);
-    }
-    case TodosActionTypes.DELETE_SUCCESS: {
-      const {payload} = action;
-      const nextState = setDeletion(state, payload, false);
-      nextState.result.todos = nextState.result.todos.filter((id) => id !== payload);
-      return nextState;
-    }
     case TodosActionTypes.CREATE_REQUEST: {
       return state;
     }
     case TodosActionTypes.CREATE_SUCCESS: {
-      const {payload} = action;
-      const nextState = {...state};
-      nextState.entities.todos = {
-        ...nextState.entities.todos,
-        ...payload.entities.todos,
-      };
-      nextState.result.todos = state.result.todos.concat(payload.result.todos);
-      return nextState;
+      const payload = action.payload;
+      return merge(
+        {},
+        state,
+        payload,
+        {result: {todos: state.result.todos.concat(payload.result.todos)}}
+      );
     }
-    case TodosActionTypes.UPDATE_SUCCESS: {
-      const payload: NormalizedTodos = action.payload;
-      const updatedTodoId = payload.result.todos[0];
-      return setSaving(state, updatedTodoId, false);
-    }
-    case TodosActionTypes.START_EDITION: {
-      return setEdition(state, action.payload.id, true);
-    }
-    case TodosActionTypes.CANCEL_EDITION: {
-      return setEdition(state, action.payload.id, false);
-    }
-    case TodosActionTypes.UPDATE_REQUEST: {
-      const payload: TodoModel = action.payload;
-      let nextState = setEdition(state, payload.id, false);
-      nextState = setSaving(nextState, payload.id, true);
-      return setEntity(nextState, payload);
-    }
+    // TODO 1: Delete actions
+    // TODO 2a: Edit actions
+    // TODO 2b: Update actions
     case TodosActionTypes.CREATE_ERROR:
-    case TodosActionTypes.DELETE_ERROR:
-    case TodosActionTypes.UPDATE_ERROR:
     case TodosActionTypes.FETCH_ALL_ERROR: {
       return state; // TODO
     }
@@ -146,27 +119,23 @@ export function todosReducer(state = initialState, action: TodosActions): TaskMa
   }
 }
 
+// helper functions
 function setEdition(state: TaskManagementState, todoId: number, value: boolean): TaskManagementState {
-  return setMapPropValue(state, 'isEditing', todoId, value);
-}
-
-function setDeletion(state: TaskManagementState, todoId: number, value: boolean): TaskManagementState {
-  return setMapPropValue(state, 'isDeleting', todoId, value);
+  return merge({}, state, {
+    isEditing: {
+      todos: {
+        [todoId]: value
+      }
+    }
+  });
 }
 
 function setSaving(state: TaskManagementState, todoId: number, value: boolean): TaskManagementState {
-  return setMapPropValue(state, 'isSaving', todoId, value);
-}
-
-function setEntity(state: TaskManagementState, todo: TodoModel): TaskManagementState {
-  return setMapPropValue(state, 'entities', todo.id, todo);
-}
-
-function setMapPropValue<T>(state: TaskManagementState, propName: string, todoId: number, value: T): TaskManagementState {
-  const nextState: TaskManagementState = {...state};
-  nextState[propName].todos = {
-    ...nextState[propName].todos,
-    [todoId]: value,
-  };
-  return nextState;
+  return merge({}, state, {
+    isSaving: {
+      todos: {
+        [todoId]: value
+      }
+    }
+  });
 }
