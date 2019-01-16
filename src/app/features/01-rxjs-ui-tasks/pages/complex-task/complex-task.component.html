@@ -1,0 +1,11 @@
+<div class="main-cont">
+  <h3>Complex</h3>
+  <hr/>
+  <div *ngIf="showErrorModal$ | async" class="modal">
+    <h5>{{ modalText$ | async }}</h5>
+  </div>
+
+  <div>
+    <button (click)="fetchData()">Fetch data</button>
+  </div>
+</div>

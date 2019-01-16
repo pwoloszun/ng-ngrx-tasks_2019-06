@@ -1,0 +1,40 @@
+<div class="registration-form">
+  <h3>
+    registration-form
+  </h3>
+  <form [formGroup]="registrationForm">
+
+    <div>
+      <label>First Name</label>
+      <input formControlName="firstName" type="text"/>
+    </div>
+
+    <div>
+      <label>Last Name</label>
+      <input formControlName="lastName" type="text"/>
+    </div>
+
+    <div>
+      <label>Permission Type</label>
+      <select class="form-control" formControlName="selectedPermision">
+        <option *ngFor="let perm of permissionTypes" [value]="perm">{{perm}}</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Monthly Income</label>
+      <input formControlName="monthlyIncome" type="number"/>
+    </div>
+
+    <div>
+      <label>Months Count</label>
+      <input formControlName="monthsCount" type="number"/>
+    </div>
+
+    <button
+      (click)="submitForm()"
+      [disabled]="!registrationForm.valid"
+    >Submit
+    </button>
+  </form>
+</div>

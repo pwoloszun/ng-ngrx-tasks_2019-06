@@ -12,6 +12,10 @@ const appRoutes: Routes = [
     },
   },
   {
+    path: 'rxjs-ui-tasks',
+    loadChildren: './features/01-rxjs-ui-tasks/rxjs-ui-tasks.module#RxjsUiTasksModule',
+  },
+  {
     path: 'store-basics',
     loadChildren: './features/02-basics/basics.module#BasicsModule',
   },
