@@ -12,6 +12,7 @@ export class MainNavComponent {
 
   mainMenuLinks = [
     { text: 'Dashboard', url: '/' },
+    { text: 'RxJS UI: Search', url: '/rxjs-ui-tasks/search-task' },
     { text: 'RxJS UI: Form', url: '/rxjs-ui-tasks/registration-form' },
     { text: 'RxJS UI: Complex', url: '/rxjs-ui-tasks/complex' },
     { text: 'Store Basics', url: '/store-basics' },

@@ -13,19 +13,19 @@ const appRoutes: Routes = [
   },
   {
     path: 'rxjs-ui-tasks',
-    loadChildren: './features/01-rxjs-ui-tasks/rxjs-ui-tasks.module#RxjsUiTasksModule',
+    loadChildren: () => import('./features/01-rxjs-ui-tasks/rxjs-ui-tasks.module').then(m => m.RxjsUiTasksModule),
   },
   {
     path: 'store-basics',
-    loadChildren: './features/02-basics/basics.module#BasicsModule',
+    loadChildren: () => import('./features/02-basics/basics.module').then(m => m.BasicsModule),
   },
   {
     path: 'side-effects',
-    loadChildren: './features/03-side-effects/side-effects.module#SideEffectsModule',
+    loadChildren: () => import('./features/03-side-effects/side-effects.module').then(m => m.SideEffectsModule),
   },
   {
     path: 'task-management',
-    loadChildren: './features/task-management/task-management.module#TaskManagementModule',
+    loadChildren: () => import('./features/task-management/task-management.module').then(m => m.TaskManagementModule),
   },
   // {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   { path: '**', component: PageNotFoundComponent }

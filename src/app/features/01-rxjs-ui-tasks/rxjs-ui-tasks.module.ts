@@ -7,6 +7,8 @@ import { RegistrationService } from './services/registration.service';
 import { RegistrationFormComponent } from './pages/registration-form/registration-form.component';
 import { ComplexTaskComponent } from './pages/complex-task/complex-task.component';
 import { ApiCallService } from './services/api-call.service';
+import { SearchTaskComponent } from './pages/search-task/search-task.component';
+import { SearchService } from './services/search.service';
 
 @NgModule({
   imports: [
@@ -18,10 +20,12 @@ import { ApiCallService } from './services/api-call.service';
   declarations: [
     RegistrationFormComponent,
     ComplexTaskComponent,
+    SearchTaskComponent,
   ],
   providers: [
     RegistrationService,
     ApiCallService,
+    SearchService,
   ],
 })
 export class RxjsUiTasksModule {

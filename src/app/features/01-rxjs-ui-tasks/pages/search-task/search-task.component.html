@@ -1,0 +1,14 @@
+<form [formGroup]="registrationForm">
+  <h3>Search Task</h3>
+  <div>
+    <label>Search Query</label>
+    <input formControlName="searchField" type="text"/>
+  </div>
+  <div>
+    <ul>
+      <li *ngFor="let result of searchResults$ | async">
+        {{ result }}
+      </li>
+    </ul>
+  </div>
+</form>
