@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SearchService } from '../../services/search.service';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'nts-search-task',
@@ -11,20 +9,14 @@ import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operato
 })
 export class SearchTaskComponent implements OnInit {
 
-  private registrationForm = this.formBuilder.group({
+  private searchForm = this.formBuilder.group({
     searchField: [''],
   });
-  private searchFieldControl = this.registrationForm.get('searchField');
+  private searchFieldControl = this.searchForm.get('searchField');
 
-  searchResults$ = this.searchFieldControl.valueChanges.pipe(
-    tap((s) => console.log('qq', s)),
-    distinctUntilChanged(),
-    debounceTime(300),
-    switchMap((query: string) => this.searchService.search$(query)),
-    tap((s) => console.log('res', s)),
-  );
+  // searchResults$ // TODO
 
-  constructor(private searchService: SearchService, private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {

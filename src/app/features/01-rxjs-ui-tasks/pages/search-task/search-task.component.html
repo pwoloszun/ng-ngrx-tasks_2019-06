@@ -1,4 +1,4 @@
-<form [formGroup]="registrationForm">
+<form [formGroup]="searchForm">
   <h3>Search Task</h3>
   <div>
     <label>Search Query</label>
@@ -6,8 +6,14 @@
   </div>
   <div>
     <ul>
-      <li *ngFor="let result of searchResults$ | async">
-        {{ result }}
+      <li>
+        result 1 TODO
+      </li>
+      <li>
+        result 2 TODO
+      </li>
+      <li>
+        result 3 TODO
       </li>
     </ul>
   </div>
